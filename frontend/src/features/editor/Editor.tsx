@@ -32,7 +32,7 @@ const CodeEditor: React.FC<EditorComponentProps> = ({ roomId }) => {
             const newCode = event.data;
             isRemoteUpdate.current = true;
             dispatch(setCode(newCode));
-            // Reset flag after a short delay to allow React to render
+
             setTimeout(() => {
                 isRemoteUpdate.current = false;
             }, 50);
@@ -55,7 +55,7 @@ const CodeEditor: React.FC<EditorComponentProps> = ({ roomId }) => {
                 ws.current.send(value);
             }
 
-            // Autocomplete logic
+
             if (typingTimeoutRef.current) {
                 clearTimeout(typingTimeoutRef.current);
             }
@@ -71,7 +71,7 @@ const CodeEditor: React.FC<EditorComponentProps> = ({ roomId }) => {
                         const response = await axios.post('http://localhost:8000/autocomplete', {
                             code: value,
                             cursorPosition: offset,
-                            language: 'python' // Hardcoded for now
+                            language: 'python'
                         });
                         if (response.data.suggestion) {
                             setSuggestion(response.data.suggestion);
@@ -92,14 +92,14 @@ const CodeEditor: React.FC<EditorComponentProps> = ({ roomId }) => {
     const acceptSuggestion = () => {
         if (suggestion && editorRef.current) {
             const position = editorRef.current.getPosition();
-            // Insert the suggestion at the current cursor position
+
             editorRef.current.executeEdits('', [{
                 range: new monacoRef.current.Range(position.lineNumber, position.column, position.lineNumber, position.column),
                 text: suggestion,
                 forceMoveMarkers: true
             }]);
             setSuggestion(null);
-            // Trigger change to sync
+
             handleEditorChange(editorRef.current.getValue());
         }
     }

@@ -3,15 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database import engine, Base
 from .routers import rooms, websocket
 
-# Create tables
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# CORS configuration
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all for prototype
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

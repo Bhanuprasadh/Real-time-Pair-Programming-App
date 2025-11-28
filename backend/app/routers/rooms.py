@@ -16,7 +16,7 @@ def create_room(db: Session = Depends(database.get_db)):
 
 @router.post("/autocomplete", response_model=schemas.AutocompleteResponse)
 def autocomplete(request: schemas.AutocompleteRequest):
-    # Mocked static/rule-based AI suggestion
+
     suggestion = ""
     code = request.code
     

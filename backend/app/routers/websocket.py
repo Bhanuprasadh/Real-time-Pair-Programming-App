@@ -9,7 +9,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
     try:
         while True:
             data = await websocket.receive_text()
-            # Simple syncing: broadcast the full code content
+
             await manager.broadcast(data, room_id, websocket)
     except WebSocketDisconnect:
         manager.disconnect(websocket, room_id)

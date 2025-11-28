@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 class RoomCreate(BaseModel):
-    pass # No specific fields needed to create a room, just generates an ID
+    pass
 
 class RoomResponse(BaseModel):
     room_id: str
