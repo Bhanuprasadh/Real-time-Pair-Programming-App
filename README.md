@@ -115,5 +115,3 @@ This is a prototype for a real-time collaborative coding platform. It allows two
   - *Improvement*: Periodically save code state to the database or Redis.
 - **Authentication**: No user authentication.
   - *Improvement*: Add user accounts and auth (e.g., JWT, OAuth).
-# Real-time-Pair-Programming-App
-# Real-time-Pair-Programming-App
